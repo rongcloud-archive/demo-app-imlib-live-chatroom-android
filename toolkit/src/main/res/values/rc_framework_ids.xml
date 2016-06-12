@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="rc_send"/>
+    <item type="id" name="rc_back"/>
+    <item type="id" name="rc_img"/>
+</resources>

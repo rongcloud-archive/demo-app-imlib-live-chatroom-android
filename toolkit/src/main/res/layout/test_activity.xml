@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <FrameLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setECS"
+                android:layout_gravity="center|left"
+                android:id="@+id/setECS"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setCSE"
+                android:layout_gravity="center"
+                android:id="@+id/setCSE"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setCES"
+                android:layout_gravity="center|right"
+
+                android:id="@+id/setCES"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setSC"
+                android:layout_gravity="bottom|left"
+
+                android:id="@+id/setSC"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setCS"
+                android:layout_gravity="bottom|center"
+
+                android:id="@+id/setCS"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setC"
+                android:layout_gravity="right|bottom"
+
+                android:id="@+id/setC"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setSCE"
+                android:layout_gravity="left|top"
+
+                android:id="@+id/setSCE"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setEC"
+                android:layout_gravity="right|top"
+                android:id="@+id/setEC"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setCE"
+                android:id="@+id/setCE"
+                android:layout_gravity="center_horizontal|top" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setRobot"
+                android:id="@+id/setRobot"
+                android:layout_gravity="center_horizontal|top" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setRobotOnly"
+                android:id="@+id/setRobotOnly"
+                android:layout_gravity="right|top" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="setHuman"
+                android:id="@+id/setHuman"
+                android:layout_gravity="left|top" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <io.rong.toolkit.RongInputBoard
+        android:id="@+id/input_board"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </io.rong.toolkit.RongInputBoard>
+</RelativeLayout>

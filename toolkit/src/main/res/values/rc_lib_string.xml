@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="rc_quit_custom_service">客服已结束</string>
+    <string name="rc_init_failed">连接客服失败</string>
+</resources>

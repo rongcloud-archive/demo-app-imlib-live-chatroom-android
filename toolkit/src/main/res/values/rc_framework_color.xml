@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PictureSelectorActivity -->
+    <color name="rc_picsel_toolbar">#393A3E</color>
+    <color name="rc_picsel_toolbar_transparent">#F0393A3E</color>
+    <color name="rc_picsel_toolbar_send_normal">#45C018</color>
+    <color name="rc_picsel_toolbar_send_pressed">#3E7D2C</color>
+    <color name="rc_picsel_toolbar_send_disable">#3E7D2C</color>
+    <color name="rc_picsel_toolbar_send_text_disable">#AAAAAA</color>
+    <color name="rc_picsel_toolbar_send_text_normal">#FFFFFF</color>
+    <color name="rc_picsel_grid_mask">#00000000</color>
+    <color name="rc_picsel_grid_mask_pressed">#80000000</color>
+    <color name="rc_picsel_catalog_shadow">#C0000000</color>
+
+    <!-- PicturePreviewActivity -->
+    <color name="rc_picprev_toolbar_transparent">@color/rc_picsel_toolbar_transparent</color>
+
+    <color name="rc_input_board">#f4f4f6</color>
+    <color name="rc_divider_line">#ababad</color>
+
+</resources>
