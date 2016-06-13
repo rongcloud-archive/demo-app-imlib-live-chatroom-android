@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="live_master">#ff3eb9</color>
+    <color name="live_me">#62e0ff</color>
+    <color name="live_other">#e2e2e2</color>
 </resources>

@@ -27,35 +27,44 @@
         android:layout_marginTop="40dp"
         android:orientation="vertical">
 
-        <demo.rong.livechat.widget.LoginEdit
+        <cn.rongcloud.livechatroom.widget.LoginEdit
             android:id="@+id/user_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <demo.rong.livechat.widget.LoginEdit
+        <cn.rongcloud.livechatroom.widget.LoginEdit
             android:id="@+id/nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"/>
 
-        <demo.rong.livechat.widget.LoginEdit
+        <cn.rongcloud.livechatroom.widget.LoginEdit
             android:id="@+id/chatroom_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"/>
 
-        <demo.rong.livechat.widget.LoginEdit
+        <cn.rongcloud.livechatroom.widget.LoginEdit
             android:id="@+id/live_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="直播源为金山直播源地址"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="12dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"/>
 
         <Button
             android:id="@+id/login"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/selector_loginedit_button"
             android:enabled="false"
             android:text="进入聊天室"

@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/selector_loginedit_underline"
-        android:enabled="false"/>
+        android:background="@drawable/selector_loginedit_underline"/>
 
     <EditText
         android:id="@+id/content"
@@ -19,9 +18,10 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:background="@null"
+        android:selectAllOnFocus="true"
         android:singleLine="true"
         android:textColor="@android:color/white"
-        android:textColorHint="@android:color/darker_gray"
+        android:textColorHint="#55ffffff"
         android:textCursorDrawable="@null"
         android:textSize="16sp"/>
 

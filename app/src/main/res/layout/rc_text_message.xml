@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/rc_livechat_message_bg"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:padding="7dp">
+
+    <TextView
+        android:id="@+id/rc_username"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+
+    <TextView
+        android:id="@+id/rc_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="all"
+        android:gravity="center_vertical"
+        android:textColor="#ffffff"
+        android:textSize="14sp"/>
+</LinearLayout>

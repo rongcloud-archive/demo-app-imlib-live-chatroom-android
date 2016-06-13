@@ -1,4 +1,4 @@
-package demo.rong.livechat;
+package cn.rongcloud.livechatroom;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

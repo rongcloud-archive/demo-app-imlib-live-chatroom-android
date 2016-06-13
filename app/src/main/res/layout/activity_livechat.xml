@@ -2,16 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-
-    <io.rong.toolkit.RongInputBoard
-        android:id="@+id/input_board"
+    <fragment
+        android:id="@+id/live_chatroom_fragment"
+        android:name="cn.rongcloud.livechatroom.livekit.LiveChatRoomFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:layout_height="match_parent"/>
 </RelativeLayout>
