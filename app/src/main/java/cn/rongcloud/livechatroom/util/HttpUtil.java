@@ -1,16 +1,11 @@
 package cn.rongcloud.livechatroom.util;
 
 
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 
@@ -19,8 +14,8 @@ public class HttpUtil {
     private static final String TAG = "HttpUtil";
 
     public static final String REQUEST_GET_TOKEN = "https://api.cn.ronghub.com/user/getToken.json";
-    public static final String APP_KEY = "n19jmcy59ocx9";
-    public static final String APP_SECRET = "PblLNSx3hSkW";
+    public static final String APP_KEY = "e5t4ouvptkm2a";
+    public static final String APP_SECRET = "vB4FakXm8f68";
 
     private static final String APPKEY = "RC-App-Key";
     private static final String NONCE = "RC-Nonce";

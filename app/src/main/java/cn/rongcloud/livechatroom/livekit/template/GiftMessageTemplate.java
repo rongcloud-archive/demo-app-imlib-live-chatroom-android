@@ -48,7 +48,7 @@ public class GiftMessageTemplate implements BaseMessageTemplate {
         }
 
         GiftMessage giftMessage = (GiftMessage) msg.getContent();
-        SpannableStringBuilder ssb = new SpannableStringBuilder(username + "送出一个X, content = " + giftMessage.getContent());
+        SpannableStringBuilder ssb = new SpannableStringBuilder(username + "送出一个X");
         Bitmap bitmap = BitmapFactory.decodeResource(parent.getContext().getResources(), res);
         ImageSpan imageSpan = new ImageSpan(parent.getContext(), bitmap);
         int start = ssb.toString().indexOf("X");
