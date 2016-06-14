@@ -57,6 +57,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="12dp"
             android:textColor="@android:color/darker_gray"
+            android:visibility="invisible"
             android:textSize="14sp"/>
 
         <Button
