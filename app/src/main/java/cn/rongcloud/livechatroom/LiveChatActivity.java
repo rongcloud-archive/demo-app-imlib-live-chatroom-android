@@ -246,6 +246,12 @@ public class LiveChatActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    @Override
+    public void onDestroy() {
+        liveClient.stopPlay();
+        super.onDestroy();
+    }
+
     public void onEventMainThread(BusEvent.MessageReceived event) {
         Log.d(TAG, "BusEvent.MessageReceived left = " + event.left);
         Message msg = event.message;
