@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(String userId) {
                 Log.d(TAG, "——onSuccess—-" + userId);
                 RongIM.getInstance().startConversation(LoginActivity.this, Conversation.ConversationType.CHATROOM,
-                        "Chatroom001", url);
+                        "ChatRoom01", url);
                 requesting = false;
             }
 
