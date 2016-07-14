@@ -21,7 +21,8 @@ public class InformationNotificationMessageTemplate implements BaseMessageTempla
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rc_infor_message, null);
-            holder.content = (TextView) convertView.findViewById(R.id.rc_content);
+            holder.username = (TextView) convertView.findViewById(R.id.username);
+            holder.content = (TextView) convertView.findViewById(R.id.content);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -29,6 +30,7 @@ public class InformationNotificationMessageTemplate implements BaseMessageTempla
 
         Message msg = data.getMessage();
         InformationNotificationMessage infoMsg = (InformationNotificationMessage) msg.getContent();
+        holder.username.setText(infoMsg.getUserInfo().getName() + " ");
         holder.content.setText(infoMsg.getMessage());
         return convertView;
     }
@@ -49,6 +51,7 @@ public class InformationNotificationMessageTemplate implements BaseMessageTempla
     }
 
     private class ViewHolder {
+        TextView username;
         TextView content;
     }
 }

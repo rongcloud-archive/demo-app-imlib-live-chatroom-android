@@ -1,75 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/rc_bg"/>
-
-    <ImageView
-        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="120dp"
         android:src="@drawable/rc_logo"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logo"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:text="选择直播源"
+        android:textColor="#00aeff"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
         android:orientation="vertical">
 
-        <cn.rongcloud.livechatroom.widget.LoginEdit
-            android:id="@+id/user_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <cn.rongcloud.livechatroom.widget.LoginEdit
-            android:id="@+id/nickname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"/>
-
-        <cn.rongcloud.livechatroom.widget.LoginEdit
-            android:id="@+id/chatroom_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"/>
-
-        <cn.rongcloud.livechatroom.widget.LoginEdit
-            android:id="@+id/live_url"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="直播源为金山直播源地址"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="12dp"
-            android:textColor="@android:color/darker_gray"
-            android:visibility="invisible"
-            android:textSize="14sp"/>
+        <Button
+            android:id="@+id/btn_tv"
+            android:layout_width="140dp"
+            android:layout_height="41dp"
+            android:background="@drawable/btn"
+            android:text="电视"
+            android:textColor="#00aeff"
+            android:textSize="18sp"/>
 
         <Button
-            android:id="@+id/login"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/selector_loginedit_button"
-            android:enabled="false"
-            android:text="进入聊天室"
-            android:textColor="@drawable/selector_loginedit_button_text"
-            android:textSize="16sp"/>
+            android:id="@+id/btn_live"
+            android:layout_width="140dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn"
+            android:text="直播"
+            android:textColor="#00aeff"
+            android:textSize="18sp"/>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

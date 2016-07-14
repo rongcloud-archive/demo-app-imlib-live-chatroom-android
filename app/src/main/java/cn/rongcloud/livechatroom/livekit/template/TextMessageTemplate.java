@@ -23,8 +23,8 @@ public class TextMessageTemplate implements BaseMessageTemplate {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rc_text_message, null);
-            holder.username = (TextView) convertView.findViewById(R.id.rc_username);
-            holder.content = (TextView) convertView.findViewById(R.id.rc_content);
+            holder.username = (TextView) convertView.findViewById(R.id.username);
+            holder.content = (TextView) convertView.findViewById(R.id.content);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -33,16 +33,16 @@ public class TextMessageTemplate implements BaseMessageTemplate {
         Message msg = data.getMessage();
         UserInfo info = msg.getContent().getUserInfo();
         if (info != null) {
-            holder.username.setText(info.getName() + ":");
+            holder.username.setText(info.getName() + ": ");
         } else {
-            holder.username.setText(msg.getSenderUserId() + ":");
+            holder.username.setText(msg.getSenderUserId() + ": ");
         }
 
-        if (msg.getMessageDirection() == Message.MessageDirection.SEND) {
-            holder.username.setTextColor(parent.getContext().getResources().getColor(R.color.live_me));
-        } else if (msg.getMessageDirection() == Message.MessageDirection.RECEIVE) {
-            holder.username.setTextColor(parent.getContext().getResources().getColor(R.color.live_other));
-        }
+//        if (msg.getMessageDirection() == Message.MessageDirection.SEND) {
+//            holder.username.setTextColor(parent.getContext().getResources().getColor(R.color.live_me));
+//        } else if (msg.getMessageDirection() == Message.MessageDirection.RECEIVE) {
+//            holder.username.setTextColor(parent.getContext().getResources().getColor(R.color.live_other));
+//        }
 
         TextMessage textMsg = (TextMessage) msg.getContent();
         CharSequence text = Emoji.ensure(parent.getContext(), textMsg.getContent());

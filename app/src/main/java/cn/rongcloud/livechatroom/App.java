@@ -36,12 +36,4 @@ public class App extends Application {
         }
         return null;
     }
-
-    public static UserInfo getCurrentUserInfo() {
-        return userInfo;
-    }
-
-    public static void setCurrentUserInfo(UserInfo info) {
-        userInfo = info;
-    }
 }

@@ -16,6 +16,12 @@
             android:layout_centerInParent="true"/>
     </RelativeLayout>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/members"/>
+
     <ListView
         android:id="@+id/live_chatlist"
         android:layout_width="240dp"
@@ -37,27 +43,31 @@
         android:padding="10dp"
         android:text="@string/live_new_message"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/input_board"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="150dp"
-        android:orientation="vertical">
+        android:layout_alignParentBottom="true">
 
         <ImageView
-            android:id="@+id/gift_flower"
+            android:id="@+id/icon_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/u1f339"/>
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/inputicon"/>
 
         <ImageView
-            android:id="@+id/gift_applaud"
+            android:id="@+id/icon_heart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/u1f44f"/>
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:src="@drawable/hearticon"/>
+
+        <ImageView
+            android:id="@+id/icon_gift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gifticon"/>
+    </RelativeLayout>
 
     <io.rong.toolkit.RongInputBoard
         android:id="@id/input_board"

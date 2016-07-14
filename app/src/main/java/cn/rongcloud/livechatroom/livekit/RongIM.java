@@ -103,6 +103,10 @@ public class RongIM {
         userInfoProvider = provider;
     }
 
+    public void setCurrentUserInfo(UserInfo info) {
+        currentUserInfo = info;
+    }
+
     public UserInfo getCurrentUserInfo() {
         if (currentUserInfo == null) {
             if (userInfoProvider != null) {
@@ -115,6 +119,7 @@ public class RongIM {
     }
 
     public void sendMessage(final Message msg) {
+        msg.getContent().setUserInfo(RongIM.getInstance().getCurrentUserInfo());
         RongIMClient.SendMessageCallback callback = new RongIMClient.SendMessageCallback() {
             @Override
             public void onSuccess(Integer integer) {

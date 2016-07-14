@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ImageSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,8 @@ public class GiftMessageTemplate implements BaseMessageTemplate {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rc_customize_message, null);
-            holder.content = (TextView) convertView.findViewById(R.id.rc_content);
+            holder.username = (TextView) convertView.findViewById(R.id.username);
+            holder.content = (TextView) convertView.findViewById(R.id.content);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -34,26 +36,20 @@ public class GiftMessageTemplate implements BaseMessageTemplate {
 
         Message msg = data.getMessage();
         UserInfo info = msg.getContent().getUserInfo();
-        String username;
         if (info != null) {
-            username = info.getName();
+            holder.username.setText(info.getName() + " ");
         } else {
-            username = msg.getSenderUserId();
+            holder.username.setText(msg.getSenderUserId() + " ");
         }
 
-        int res = R.drawable.u1f339;
         GiftMessage giftMsg = (GiftMessage) msg.getContent();
+        String content;
         if (giftMsg.getType().equals("1")) {
-            res = R.drawable.u1f44f;
+            content = "为主播点赞";
+        } else{
+            content = "送了一个钻石";
         }
-
-        GiftMessage giftMessage = (GiftMessage) msg.getContent();
-        SpannableStringBuilder ssb = new SpannableStringBuilder(username + "送出一个X");
-        Bitmap bitmap = BitmapFactory.decodeResource(parent.getContext().getResources(), res);
-        ImageSpan imageSpan = new ImageSpan(parent.getContext(), bitmap);
-        int start = ssb.toString().indexOf("X");
-        ssb.setSpan(imageSpan, start, start + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        holder.content.setText(ssb);
+        holder.content.setText(content);
         return convertView;
     }
 
@@ -73,6 +69,7 @@ public class GiftMessageTemplate implements BaseMessageTemplate {
     }
 
     private class ViewHolder {
+        TextView username;
         TextView content;
     }
 }

@@ -75,8 +75,8 @@ public class LiveChatRoomFragment extends Fragment implements RongIMClient.OnRec
         newMessage = new NewMessageHint(root, liveChatListView);
         rongInputBoard = (RongInputBoard) root.findViewById(R.id.input_board);
         rongInputBoard.setActivity(getActivity());
-        gift_flower = (ImageView) root.findViewById(R.id.gift_flower);
-        gift_applaud = (ImageView) root.findViewById(R.id.gift_applaud);
+        gift_flower = (ImageView) root.findViewById(R.id.icon_gift);
+        gift_applaud = (ImageView) root.findViewById(R.id.icon_gift);
 
         rongInputBoard.setInputBarStyle(InputBar.Style.STYLE_CONTAINER);
         liveChatListAdapter = new LiveChatListAdapter();
@@ -86,7 +86,7 @@ public class LiveChatRoomFragment extends Fragment implements RongIMClient.OnRec
             @Override
             public void onSuccess() {
                 UserInfo info = RongIM.getInstance().getCurrentUserInfo();
-                String infoText = String.format(getResources().getString(R.string.live_join_chatroom), info.getName());
+                String infoText = getResources().getString(R.string.live_join_chatroom);
                 Log.d(TAG, "infoText = " + infoText);
                 InformationNotificationMessage content = InformationNotificationMessage.obtain(infoText);
                 Message msg = Message.obtain(targetId, conversationType, content);
