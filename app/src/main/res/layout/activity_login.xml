@@ -44,7 +44,7 @@
             android:layout_height="41dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/btn"
-            android:text="直播"
+            android:text="主播"
             android:textColor="#00aeff"
             android:textSize="18sp"/>
     </LinearLayout>
