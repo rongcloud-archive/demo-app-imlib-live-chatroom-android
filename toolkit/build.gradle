@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
+        versionCode 2016072717 
+        versionName ""
     }
     buildTypes {
         release {
@@ -18,15 +18,18 @@ android {
 
     sourceSets {
         main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/java']
+            renderscript.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+            jni.srcDirs = []
             jniLibs.srcDirs = ['src/main/libs']
         }
-    }
-    lintOptions {
-        abortOnError false
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-v4:21.0.3'
-}
+       }
