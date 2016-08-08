@@ -160,7 +160,19 @@ IMLib 是不含界面的基础IM 通讯能力库，封装了通信能力和会�
 	/**
 	* 用于自定义消息的注册, 注册后方能正确识别自定义消息, 建议在init后及时注册，保证自定义消息到达时能正确解析。
 	*
-	* @param messageContentClass 消息类型，必须要继承自 {@link io.rong.imlib.model.MessageContent}。
+	* @param messageContentClass 消息类型，必须要继承自MessageContent。
 	* @throws AnnotationNotFoundException 如果没有找到注解时抛出。
 	*/
 	public static void registerMessageType(Class<? extends MessageContent> messageContentClass);
+
+Demo 中自定义了一种消息类型GiftMessage，以及它的UI 展示类GiftMsgView。开发者可以参考它的实现以及注册方法。
+
+### 直播聊天室Demo 对IMLib的封装
+融云直播聊天室Demo 中的LiveKit 类是对IMLib 库的接口封装类。目的是在IMLib 库众多通用接口中，提炼出与直播聊天室应用相关的常用接口，方便开发者了解IMLib 库的调用流程，降低学习成本。同时也开发者可以此为基础扩展，并快速移植到自己的应用中去。
+
+<strong>注意：</strong>此种封装并不是集成IMLib库的唯一方法，开发者可以根据自身需求添加修改，或者直接使用IMLib接口。
+
+### 直播聊天室Demo 对消息的展示
+IMLib 库自带若干种消息类型，但这些消息如何展示在用户界面上，还需要对应的消息展示类。Demo 里提供了一种实现思路，即每一个消息类型对应一个消息展示类，通过LiveKit.registerMessageView 方法将其注册关联。
+
+消息展示类需要继承了BaseMsgView，并实现构造函数跟setContent 函数。其中构造函数负责加载布局元素，setContent 方法负责填充数据。最终由ChatListAdapter 显示在ListView 中。
