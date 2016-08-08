@@ -13,7 +13,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
-        RongLiveApi.init(context, FakeServer.getAppKey());
+        LiveKit.init(context, FakeServer.getAppKey());
     }
 
     public static Context getContext() {

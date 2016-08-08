@@ -17,8 +17,8 @@ import com.ksyun.media.player.KSYMediaPlayer;
 import java.io.IOException;
 import java.util.Random;
 
+import cn.rongcloud.live.LiveKit;
 import cn.rongcloud.live.R;
-import cn.rongcloud.live.RongLiveApi;
 import cn.rongcloud.live.controller.ChatListAdapter;
 import cn.rongcloud.live.ui.animation.HeartLayout;
 import cn.rongcloud.live.ui.fragment.BottomPanelFragment;
@@ -52,7 +52,6 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
     private IMediaPlayer.OnPreparedListener onPreparedListener = new IMediaPlayer.OnPreparedListener() {
         @Override
         public void onPrepared(IMediaPlayer mp) {
-            // Set Video Scaling Mode
             ksyMediaPlayer.setVideoScalingMode(KSYMediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
             ksyMediaPlayer.start();
         }
@@ -61,19 +60,19 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
     private final SurfaceHolder.Callback surfaceCallback = new SurfaceHolder.Callback() {
         @Override
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-            if(ksyMediaPlayer != null && ksyMediaPlayer.isPlaying())
+            if (ksyMediaPlayer != null && ksyMediaPlayer.isPlaying())
                 ksyMediaPlayer.setVideoScalingMode(KSYMediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
         }
 
         @Override
         public void surfaceCreated(SurfaceHolder holder) {
-            if(ksyMediaPlayer != null)
+            if (ksyMediaPlayer != null)
                 ksyMediaPlayer.setDisplay(holder);
         }
 
         @Override
         public void surfaceDestroyed(SurfaceHolder holder) {
-            if(ksyMediaPlayer != null) {
+            if (ksyMediaPlayer != null) {
                 ksyMediaPlayer.setDisplay(null);
             }
         }
@@ -83,7 +82,7 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liveshow);
-        RongLiveApi.addEventHandler(handler);
+        LiveKit.addEventHandler(handler);
         initView();
         startLiveShow();
     }
@@ -106,7 +105,7 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
             @Override
             public void onSendClick(String text) {
                 final TextMessage content = TextMessage.obtain(text);
-                RongLiveApi.getInstance().sendMessage(content);
+                LiveKit.sendMessage(content);
             }
         });
 
@@ -125,11 +124,11 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
     }
 
     private void joinChatRoom(final String roomId) {
-        RongLiveApi.joinChatRoom(roomId, new RongIMClient.OperationCallback() {
+        LiveKit.joinChatRoom(roomId, new RongIMClient.OperationCallback() {
             @Override
             public void onSuccess() {
                 final InformationNotificationMessage content = InformationNotificationMessage.obtain("来啦");
-                RongLiveApi.sendMessage(content);
+                LiveKit.sendMessage(content);
             }
 
             @Override
@@ -165,7 +164,7 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
             bottomPanel.onBackAction();
         } else if (v.equals(btnGift)) {
             GiftMessage msg = new GiftMessage("2", "送您一个礼物");
-            RongLiveApi.sendMessage(msg);
+            LiveKit.sendMessage(msg);
         } else if (v.equals(btnHeart)) {
             heartLayout.post(new Runnable() {
                 @Override
@@ -175,21 +174,24 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
                 }
             });
             GiftMessage msg = new GiftMessage("1", "为您点赞");
-            RongLiveApi.sendMessage(msg);
+            LiveKit.sendMessage(msg);
         }
     }
 
     @Override
     public boolean handleMessage(android.os.Message msg) {
         switch (msg.what) {
-            case RongLiveApi.MESSAGE_ARRIVED: {
+            case LiveKit.MESSAGE_ARRIVED: {
                 MessageContent content = (MessageContent) msg.obj;
                 chatListAdapter.addMessage(content);
                 break;
             }
-            case RongLiveApi.MESSAGE_SENT: {
+            case LiveKit.MESSAGE_SENT: {
                 MessageContent content = (MessageContent) msg.obj;
                 chatListAdapter.addMessage(content);
+                break;
+            }
+            case LiveKit.MESSAGE_SEND_ERROR: {
                 break;
             }
             default:
@@ -200,8 +202,8 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
 
     @Override
     protected void onDestroy() {
-        RongLiveApi.removeEventHandler(handler);
-        RongLiveApi.quitChatRoom(new RongIMClient.OperationCallback() {
+        LiveKit.removeEventHandler(handler);
+        LiveKit.quitChatRoom(new RongIMClient.OperationCallback() {
             @Override
             public void onSuccess() {
             }
@@ -210,7 +212,7 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
             public void onError(RongIMClient.ErrorCode errorCode) {
             }
         });
-        RongLiveApi.disconnect();
+        LiveKit.logout();
         ksyMediaPlayer.stop();
         super.onDestroy();
     }

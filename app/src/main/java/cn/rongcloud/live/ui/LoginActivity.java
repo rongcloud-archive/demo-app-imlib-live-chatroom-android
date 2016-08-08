@@ -11,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.rongcloud.live.R;
-import cn.rongcloud.live.RongLiveApi;
+import cn.rongcloud.live.LiveKit;
 import cn.rongcloud.live.controller.RcLog;
 import cn.rongcloud.live.fakeserver.FakeServer;
 import cn.rongcloud.live.fakeserver.HttpUtil;
@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
 
-    private RongLiveApi rongApi = RongLiveApi.getInstance();
     private Button btnTV;
     private Button btnLive;
 
@@ -71,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                rongApi.connect(token, new RongIMClient.ConnectCallback() {
+                LiveKit.connect(token, new RongIMClient.ConnectCallback() {
                     @Override
                     public void onTokenIncorrect() {
                         RcLog.d(TAG, "connect onTokenIncorrect");
@@ -81,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(String userId) {
                         RcLog.d(TAG, "connect onSuccess");
-                        rongApi.setCurrentUser(user);
+                        LiveKit.setCurrentUser(user);
                         Intent intent = new Intent(LoginActivity.this, LiveShowActivity.class);
                         intent.putExtra(LiveShowActivity.LIVE_URL, url);
                         startActivity(intent);
