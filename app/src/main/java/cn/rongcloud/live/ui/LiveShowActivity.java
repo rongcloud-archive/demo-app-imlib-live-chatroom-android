@@ -124,7 +124,7 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
     }
 
     private void joinChatRoom(final String roomId) {
-        LiveKit.joinChatRoom(roomId, new RongIMClient.OperationCallback() {
+        LiveKit.joinChatRoom(roomId, 2, new RongIMClient.OperationCallback() {
             @Override
             public void onSuccess() {
                 final InformationNotificationMessage content = InformationNotificationMessage.obtain("来啦");

@@ -77,14 +77,15 @@ public class LiveKit {
      * <p/>
      * <strong>注意：</strong>其余方法都需要在这之后调用。
      *
-     * @param context
-     * @param appKey
+     * @param context Application类的Context
+     * @param appKey  融云注册应用的AppKey
      */
     public static void init(Context context, String appKey) {
         RongIMClient.init(context, appKey);
         EmojiManager.init(context);
 
         RongIMClient.setOnReceiveMessageListener(onReceiveMessageListener);
+
         registerMessageType(GiftMessage.class);
         registerMessageView(TextMessage.class, TextMsgView.class);
         registerMessageView(InformationNotificationMessage.class, InfoMsgView.class);
@@ -189,6 +190,10 @@ public class LiveKit {
      * @param msgContent 消息对象
      */
     public static void sendMessage(final MessageContent msgContent) {
+        if (currentUser == null) {
+            throw new RuntimeException("currentUser should not be null.");
+        }
+
         msgContent.setUserInfo(currentUser);
         Message msg = Message.obtain(currentRoomId, Conversation.ConversationType.CHATROOM, msgContent);
         RongIMClient.getInstance().sendMessage(msg, null, null, new RongIMClient.SendMessageCallback() {
