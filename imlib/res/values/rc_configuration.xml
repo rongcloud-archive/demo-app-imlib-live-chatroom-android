@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--设置语音消息的码率 (单位 bps)-->
+    <integer name="rc_audio_encoding_bit_rate">7950</integer>
+
+    <!--原图压缩比例-->
+    <integer name="rc_image_quality">85</integer>
+    <!--原图压缩宽、高-->
+    <integer name="rc_image_size">960</integer>
+    <!-- 设置发送输入状态 -->
+    <bool name="rc_typing_status">false</bool>
+    <!-- 设置已读回执 -->
+    <bool name="rc_read_receipt">false</bool>
+</resources>

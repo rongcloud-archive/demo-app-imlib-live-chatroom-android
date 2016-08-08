@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="cn.rongcloud.livechatroom"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <uses-permission android:name="android.permission.INTERNET" />
+<manifest
+    package="cn.rongcloud.live"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".App"
@@ -11,24 +10,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".LiveChatActivity"
+        <activity android:name=".ui.LiveShowActivity"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data
-                    android:host="cn.rongcloud.livechatroom"
-                    android:pathPrefix="/conversation/"
-                    android:scheme="rong"/>
             </intent-filter>
         </activity>
     </application>

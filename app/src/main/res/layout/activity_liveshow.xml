@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/background" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000">
+
+    <SurfaceView
+        android:id="@+id/player_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:src="@mipmap/fake_members"/>
+
+    <cn.rongcloud.live.ui.widget.ChatListView
+        android:id="@+id/chat_listview"
+        android:layout_width="230dp"
+        android:layout_height="152dp"
+        android:layout_above="@+id/bottom_bar"
+        android:divider="@null"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none"
+        android:transcriptMode="alwaysScroll"/>
+
+    <fragment
+        android:id="@+id/bottom_bar"
+        android:name="cn.rongcloud.live.ui.fragment.BottomPanelFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        tools:layout="@layout/fragment_bottombar"/>
+
+    <cn.rongcloud.live.ui.animation.HeartLayout
+        android:id="@+id/heart_layout"
+        android:layout_width="86dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="4dp"/>
+</RelativeLayout>

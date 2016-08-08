@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">LiveApp</string>
-    <string name="live_send_failed">消息发送失败</string>
-    <string name="live_join_chatroom">来了</string>
-    <string name="live_new_message">底部有新消息</string>
+    <string name="rc_send">发送</string>
 </resources>
