@@ -72,7 +72,7 @@
 	是的。聊天室作为一种特殊的场景，其消息分发量是海量的，比如 1 万人的聊天室，如果实时在线的人每个人同时发送1条消息，那消息分发量就是 1万 X 1万 等于 1 亿的消息并发。因此您需要注意控制用户端发送消息的频率。比如常见的点赞消息，用户端可以非常快速的点赞，但建议你做成消息归并，每 1 秒再发送一条消息，每条点赞消息内携带一个数字，这个数字表示在 1 秒内该用户点赞了几次。这样可以大大减少消息并发量。
 
 
-### 开始集成融云IM需要了解的概念
+### 开始集成融云 IM 需要了解的概念
 * appKey
 * token
 * userId
@@ -82,31 +82,31 @@
 * 消息
 	* 消息类型
 
-## 融云IM是如何运转、如何与App交互的
+## 融云 IM 是如何运转、如何与 App 交互的
 
-使用融云IM聊天室之前，必须要先初始化SDK并建立与融云服务器的连接。
+使用融云 IM 聊天室之前，必须要先初始化 SDK 并建立与融云服务器的连接。
 ![](./doc/sdk_connect.png)
 
-connect成功之后，融云提供两种加入聊天室的方式。
+connect 成功之后，融云提供两种加入聊天室的方式。
 
-1. App Server创建聊天室，客户端调用joinExistChatRoom加入聊天室。
+1. App Server 创建聊天室，客户端调用 joinExistChatRoom 加入聊天室。
 ![](./doc/joinExistChatRoom.png)
 
-2. App Server只管理聊天室Id列表，客户端调用joinChatRoom加入聊天室，如果聊天室不存在则自动创建。
+2. App Server 只管理聊天室 Id列表，客户端调用joinChatRoom加入聊天室，如果聊天室不存在则自动创建。
 ![](./doc/joinChatRoom.png)
 
-> 融云Sever API也提供了将用户加入聊天室的接口，但是不要通过此接口将普通用户加入聊天室中，否则会导致聊天室自动保活的功能失效。
-> 一些记录功能的账号可以通过Server API /chatroom/join接口加入聊天室，但是普通用户需要调用SDK的joinExistChatRoom或joinExistChatRoom加入聊天室。
+> 融云 Sever API 也提供了将用户加入聊天室的接口，但是不要通过此接口将普通用户加入聊天室中，否则会导致聊天室自动保活的功能失效。
+> 一些记录功能的账号可以通过 Server API /chatroom/join 接口加入聊天室，但是普通用户需要调用 SDK 的 joinExistChatRoom 或 joinExistChatRoom 加入聊天室。
 
-### App服务器端需要做什么？
-* 管理用户体系和融云userId的映射关系
+### App 服务器端需要做什么？
+* 管理用户体系和融云 userId 的映射关系
 	
-	> 融云不维护用户体系和好友关系，App需要为您用户体系中的每个用户和融云的userId建立一一对应的映射关系。之后就可以根据userId，加入、退出聊天室并收发消息。
+	> 融云不维护用户体系和好友关系，App 需要为您用户体系中的每个用户和融云的 userId 建立一一对应的映射关系。之后就可以根据 userId，加入、退出聊天室并收发消息。
 	
-* 实现从融云获取token的逻辑
+* 实现从融云获取 token 的逻辑
 * 根据App的产品逻辑，维护每个聊天室的信息和聊天室列表
 
-### App服务器还可以做什么？
+### App 服务器还可以做什么？
 * 创建、销毁聊天室
 * 查询聊天室的信息
 * 查询聊天室中的用户列表
@@ -115,8 +115,8 @@ connect成功之后，融云提供两种加入聊天室的方式。
 * 消息分级
 * 全球节点
 
-### App客户端需要做什么?
-* 初始化SDK
+### App 客户端需要做什么?
+* 初始化 SDK
 * 加入、退出聊天室
 * 初始化视频播放器（多家合作厂家可选）
 * 收发消息
@@ -124,47 +124,47 @@ connect成功之后，融云提供两种加入聊天室的方式。
 	
 > 其中，App以上部分的功能和UI都已经实现并开源，可以开箱即用也可以随意定制。
 
-### App客户端还可以做什么？
+### App 客户端还可以做什么？
 * 自定义任意消息及其显示样式（也可以不显示）
 * 插入而不发送消息
-* 监听消息收发，App可以按自己需求控制逻辑和UI
-* 后期可以很方便地集成IMKit，快速扩展出单聊、群聊、黑名单、客服、VoIP等功能。
+* 监听消息收发，App 可以按自己需求控制逻辑和 UI
+* 后期可以很方便地集成 IMKit，快速扩展出单聊、群聊、黑名单、客服、VoIP 等功能。
 
-## Android 直播聊天室Demo说明
-融云直播聊天室Demo 使用了IMLib SDK和第三方的播放SDK。前者提供聊天消息相关的基础服务，后者则负责视频播放控制。开源部分主要为UI 的绘制及SDK 的使用控制逻辑。
+## Android 直播聊天室Demo 说明
+融云直播聊天室 Demo 使用了 IMLib SDK 和第三方的播放 SDK。前者提供聊天消息相关的基础服务，后者则负责视频播放控制。开源部分主要为 UI 的绘制及 SDK 的使用控制逻辑。
 
-IMLib 是不含界面的基础IM 通讯能力库，封装了通信能力和会话、消息等对象。引用到工程中后，需要开发者自己实现UI 界面，相对较轻量，适用于对UI 有较高订制需求的开发者。
+IMLib 是不含界面的基础 IM 通讯能力库，封装了通信能力和会话、消息等对象。引用到工程中后，需要开发者自己实现 UI 界面，相对较轻量，适用于对 UI 有较高订制需求的开发者。
 
-直播聊天室Demo：[点击下载](https://github.com/rongcloud/demo-app-imlib-live-chatroom-android)
+直播聊天室 Demo：[点击下载](https://github.com/rongcloud/demo-app-imlib-live-chatroom-android)
 
 ### IMLib SDK 集成说明
-1. 下载IMLib SDK：[点击下载](http://www.rongcloud.cn/downloads)
+1. 下载 IMLib SDK：[点击下载](http://www.rongcloud.cn/downloads)
 
 2. SDK 目录结构说明:
-	* libs 目录 - native so库，目前支持armeabi（含v7及64位），以及x86平台。如有其它平台需求，请联系客服。
+	* libs 目录 - native so 库，目前支持 armeabi（含v7及64位），以及 x86 平台。如有其它平台需求，请联系客服。
 	* res 目录- 配置及资源文件。
 	* build.gradle - gradle 配置相关，可再此定义编译版本等信息。
-	* AndroidManifest.xml - SDK 配置文件，可查看SDK所需的安卓权限等信息。
+	* AndroidManifest.xml - SDK 配置文件，可查看 SDK 所需的安卓权限等信息。
 
-3. 导入IMLib SDK：
-	* 将下载的IMLib文件夹拷贝到工程根目录，为方便使用可更名为imlib。
-	* 在settings.gradle 里加入imlib 库引用，如：
+3. 导入 IMLib SDK：
+	* 将下载的 IMLib 文件夹拷贝到工程根目录，为方便使用可更名为 imlib。
+	* 在 settings.gradle 里加入 imlib 库引用，如：
 
 			include ':app', ':imlib'
-	* 在主工程build.gradle 文件的dependencies 中加入imlib 库引用，如：
+	* 在主工程 build.gradle 文件的 dependencies 中加入 imlib 库引用，如：
 	
 			compile project(':imlib')
 
-至此IMLib SDK集成完毕，可在主工程里直接调用其接口。
+至此 IMLib SDK 集成完毕，可在主工程里直接调用其接口。
 
 ### IMLib SDK 使用说明
 1. SDK 初始化：
 
-	在使用IMLib 接口前，需要对其做初始化操作，只需调一次即可。建议在继承Application类的onCreate 方法中调用。 接口说明如下：
+	在使用 IMLib 接口前，需要对其做初始化操作，只需调一次即可。建议在继承 Application 类的 onCreate 方法中调用。 接口说明如下：
 
 		/**
-		* @param context 传入Application类的Context。
-		* @param appKey  融云注册应用的AppKey。
+		* @param context 传入 Application 类的 Context。
+		* @param appKey  融云注册应用的 AppKey。
 		*/
 		public static void init(Context context, String appKey);
 
@@ -174,7 +174,7 @@ IMLib 是不含界面的基础IM 通讯能力库，封装了通信能力和会�
 	
 		/**
 		* 设置接收消息事件的监听器。所有接收到的消息、通知、状态都经由此处设置的监听器处理。包括私聊消息、讨论组消息、群组消息、聊天室消息以及各种状态。
-		* 注意：如果调用此接口的Activity被释放回收，将无法收到事件回调。
+		* 注意：如果调用此接口的 Activity 被释放回收，将无法收到事件回调。
 		*
 		* @param listener 接收消息的监听器。
 		*/
@@ -193,11 +193,11 @@ IMLib 是不含界面的基础IM 通讯能力库，封装了通信能力和会�
 	
 4. 登录连接：
 	
-	当成功得到Token后，可以调用connect 接口与融云服务器进行连接。
+	当成功得到 Token 后，可以调用 connect 接口与融云服务器进行连接。
 	
 		/**
-		* 连接服务器，在整个应用程序全局，只需要调用一次，需在init之后调用。
-		* 如果调用此接口遇到连接失败，SDK 会自动启动重连机制进行最多10次重连，分别是1, 2, 4, 8, 16, 32, 64, 128, 256, 512秒后。
+		* 连接服务器，在整个应用程序全局，只需要调用一次，需在 init 之后调用。
+		* 如果调用此接口遇到连接失败，SDK 会自动启动重连机制进行最多 10 次重连，分别是 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 秒后。
 		* 在这之后如果仍没有连接成功，还会在当检测到设备网络状态变化时再次进行重连。
 		*
 		* @param token    从服务端获取的用户身份令牌（Token）。
@@ -206,7 +206,7 @@ IMLib 是不含界面的基础IM 通讯能力库，封装了通信能力和会�
 		*/
 		public static RongIMClient connect(final String token, final ConnectCallback callback);
     
-    当回调onSuccess 代表连接成功；若回调onTokenIncorrect 很可能是Token跟 AppKey不匹配，可以去官网-我的应用-运营工具-用户管理 中检查确认；若返回onError 请根据错误码进行检查。
+    当回调onSuccess 代表连接成功；若回调 onTokenIncorrect 很可能是 Token 跟 AppKey 不匹配，可以去官网-我的应用-运营工具-用户管理 中检查确认；若返回 onError 请根据错误码进行检查。
  
 5. 加入聊天室：
 
@@ -248,7 +248,7 @@ IMLib 是不含界面的基础IM 通讯能力库，封装了通信能力和会�
 
 7. 用户信息显示：
 
-	用户信息由UserInfo 类来承载，包含用户id，昵称，头像三部分。聊天室由于用户流动性大，建议将用户信息写入发送的消息体中。调用MessageContent的接口：
+	用户信息由 UserInfo 类来承载，包含用户 id，昵称，头像三部分。聊天室由于用户流动性大，建议将用户信息写入发送的消息体中。调用 MessageContent 的接口：
 	
 		/**
 		* 将用户信息写入消息体内
@@ -257,7 +257,7 @@ IMLib 是不含界面的基础IM 通讯能力库，封装了通信能力和会�
 		*/
 		public void setUserInfo(UserInfo info);
     
-	当收到信息后，通过调用getUserInfo，得到UserInfo类，进而得到发送者的信息。
+	当收到信息后，通过调用 getUserInfo，得到 UserInfo 类，进而得到发送者的信息。
 
 		/**
 		* 获取消息体内的用户信息。
@@ -287,24 +287,24 @@ IMLib 是不含界面的基础IM 通讯能力库，封装了通信能力和会�
 		public void disconnect();
 
 ### 自定义消息相关
-除了IMLib 内建的几种消息外，当有特殊需求时也可以自定义消息，基本概念请参看[文档](http://www.rongcloud.cn/docs/android_imlib.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF)。需要通过如下接口注册才能使用。
+除了 IMLib 内建的几种消息外，当有特殊需求时也可以自定义消息，基本概念请参看[文档](http://www.rongcloud.cn/docs/android_imlib.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF)。需要通过如下接口注册才能使用。
 
 	/**
-	* 用于自定义消息的注册, 注册后方能正确识别自定义消息, 建议在init后及时注册，保证自定义消息到达时能正确解析。
+	* 用于自定义消息的注册, 注册后方能正确识别自定义消息, 建议在 init 后及时注册，保证自定义消息到达时能正确解析。
 	*
-	* @param messageContentClass 消息类型，必须要继承自MessageContent。
+	* @param messageContentClass 消息类型，必须要继承自 MessageContent。
 	* @throws AnnotationNotFoundException 如果没有找到注解时抛出。
 	*/
 	public static void registerMessageType(Class<? extends MessageContent> messageContentClass);
 
-Demo 中自定义了一种消息类型GiftMessage，以及它的UI 展示类GiftMsgView。开发者可以参考它的实现以及注册方法。
+Demo 中自定义了一种消息类型 GiftMessage，以及它的 UI 展示类 GiftMsgView。开发者可以参考它的实现以及注册方法。
 
-### 直播聊天室Demo 对IMLib的封装
-融云直播聊天室Demo 中的LiveKit 类是对IMLib 库的接口封装类。目的是在IMLib 库众多通用接口中，提炼出与直播聊天室应用相关的常用接口，方便开发者了解IMLib 库的调用流程，降低学习成本。同时也开发者可以此为基础扩展，并快速移植到自己的应用中去。
+### 直播聊天室 Demo 对 IMLib 的封装
+融云直播聊天室 Demo 中的 LiveKit 类是对 IMLib 库的接口封装类。目的是在 IMLib 库众多通用接口中，提炼出与直播聊天室应用相关的常用接口，方便开发者了解 IMLib 库的调用流程，降低学习成本。同时也开发者可以此为基础扩展，并快速移植到自己的应用中去。
 
-<strong>注意：</strong>此种封装并不是集成IMLib库的唯一方法，开发者可以根据自身需求添加修改，或者直接使用IMLib接口。
+<strong>注意：</strong>此种封装并不是集成 IMLib 库的唯一方法，开发者可以根据自身需求添加修改，或者直接使用 IMLib 接口。
 
-### 直播聊天室Demo 对消息的展示
-IMLib 库自带若干种消息类型，但这些消息如何展示在用户界面上，还需要对应的消息展示类。Demo 里提供了一种实现思路，即每一个消息类型对应一个消息展示类，通过LiveKit.registerMessageView 方法将其注册关联。
+### 直播聊天室 Demo 对消息的展示
+IMLib 库自带若干种消息类型，但这些消息如何展示在用户界面上，还需要对应的消息展示类。Demo 里提供了一种实现思路，即每一个消息类型对应一个消息展示类，通过 LiveKit.registerMessageView 方法将其注册关联。
 
-消息展示类需要继承了BaseMsgView，并实现构造函数跟setContent 函数。其中构造函数负责加载布局元素，setContent 方法负责填充数据。最终由ChatListAdapter 显示在ListView 中。
+消息展示类需要继承了 BaseMsgView，并实现构造函数跟 setContent 函数。其中构造函数负责加载布局元素，setContent 方法负责填充数据。最终由 ChatListAdapter 显示在 ListView 中。
