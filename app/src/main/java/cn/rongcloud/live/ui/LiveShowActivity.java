@@ -205,16 +205,18 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
         LiveKit.quitChatRoom(new RongIMClient.OperationCallback() {
             @Override
             public void onSuccess() {
+                LiveKit.removeEventHandler(handler);
+                LiveKit.logout();
                 Toast.makeText(LiveShowActivity.this, "退出聊天室成功", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(RongIMClient.ErrorCode errorCode) {
+                LiveKit.removeEventHandler(handler);
+                LiveKit.logout();
                 Toast.makeText(LiveShowActivity.this, "退出聊天室失败! errorCode = " + errorCode, Toast.LENGTH_SHORT).show();
             }
         });
-        LiveKit.removeEventHandler(handler);
-        LiveKit.logout();
         ksyMediaPlayer.stop();
         super.onDestroy();
     }
