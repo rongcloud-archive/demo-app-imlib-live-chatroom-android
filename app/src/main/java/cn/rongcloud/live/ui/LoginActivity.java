@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fakeLogin("张三", "123456", "rtmp://vlive3.rtmp.cdn.ucloud.com.cn/ucloud/8969");
+                fakeLogin("张三", "123456", "rtmp://vlive3.rtmp.cdn.ucloud.com.cn/ucloud/8971");
             }
         });
     }

@@ -118,7 +118,8 @@ public class LiveShowActivity extends FragmentActivity implements View.OnClickLi
 
     private void startLiveShow() {
         roomId = "ChatRoom01";
-        String liveUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+//        String liveUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
+        String liveUrl = getIntent().getStringExtra(LiveShowActivity.LIVE_URL);
         joinChatRoom(roomId);
         playShow(liveUrl);
     }
